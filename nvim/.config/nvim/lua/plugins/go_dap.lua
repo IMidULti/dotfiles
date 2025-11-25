@@ -14,19 +14,13 @@ return {
     dap.configurations.go = dap.configurations.go or {}
 
     table.insert(dap.configurations.go, {
-      name = "Build & Debug (cwd)",
+      name = "Debug package",
       type = "go",
       request = "launch",
-
-      -- Build step (runs before dlv)
-      preLaunchTask = function()
-        vim.fn.jobstart("go build -o ./debugbin", { detach = true })
-      end,
-
-      program = "./debugbin",
-
-      -- Equivalent to: dlv exec /tmp/debugbin
-      dlvToolPath = "dlv",
+      mode = "debug",              -- or omit; it's default
+      program = "${fileDirname}",  -- current package directory
+      stopOnEntry = true,
+      console = "integratedTerminal",
     })
 
     -- Keymaps (AstroNvim safe)
