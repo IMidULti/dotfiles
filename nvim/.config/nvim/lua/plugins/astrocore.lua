@@ -26,13 +26,7 @@ return {
     filetypes = {
       -- see `:h vim.filetype.add` for usage
       extension = {
-        foo = "fooscript",
-      },
-      filename = {
-        [".foorc"] = "fooscript",
-      },
-      pattern = {
-        [".*/etc/foo/.*"] = "fooscript",
+        gotmpl = "helm", -- helm/go templates embedded in YAML
       },
     },
     -- vim options can be configured here

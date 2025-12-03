@@ -9,6 +9,7 @@ return {
       "vim",
       "go",
       "yaml",
+      "helm",
       "python",
       "markdown",
       "json",
