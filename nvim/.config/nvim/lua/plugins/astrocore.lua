@@ -36,7 +36,8 @@ return {
         number = true, -- sets vim.opt.number
         spell = false, -- sets vim.opt.spell
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
-        wrap = false, -- sets vim.opt.wrap
+        wrap = true, -- enable line wrapping
+        clipboard = "unnamedplus", -- use system clipboard for all yank/copy operations
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -71,6 +72,16 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+        ["<S-ScrollWheelUp>"] = { "zh", desc = "Scroll left (shift+wheel)" },
+        ["<S-ScrollWheelDown>"] = { "zl", desc = "Scroll right (shift+wheel)" },
+        ["<ScrollWheelLeft>"] = { "zh", desc = "Scroll left (wheel)" },
+        ["<ScrollWheelRight>"] = { "zl", desc = "Scroll right (wheel)" },
+      },
+      v = {
+        ["<S-ScrollWheelUp>"] = { "zh", desc = "Scroll left (shift+wheel)" },
+        ["<S-ScrollWheelDown>"] = { "zl", desc = "Scroll right (shift+wheel)" },
+        ["<ScrollWheelLeft>"] = { "zh", desc = "Scroll left (wheel)" },
+        ["<ScrollWheelRight>"] = { "zl", desc = "Scroll right (wheel)" },
       },
     },
   },
