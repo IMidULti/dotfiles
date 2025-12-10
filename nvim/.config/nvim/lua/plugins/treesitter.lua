@@ -13,7 +13,8 @@ return {
       "python",
       "markdown",
       "json",
-      "bash"
+      "bash",
+      "gohtmltmpl",
     },
     highlight = { enable = true },
     indent = { enable = true },

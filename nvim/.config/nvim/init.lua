@@ -25,3 +25,16 @@ end
 
 require "lazy_setup"
 require "polish"
+
+-- Map CMD+C to copy to system clipboard in Visual Mode
+vim.keymap.set("v", "<D-c>", '"+y', { noremap = true, silent = true })
+
+-- Sync clipboard between OS and Neovim.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.opt.clipboard = "unnamedplus"
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "tex", "gitcommit", "text" },
+  callback = function() vim.opt_local.spell = true end,
+})
