@@ -13,14 +13,14 @@ return {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
-      diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic settings on startup
+      diagnostics = { virtual_text = false, virtual_lines = false }, -- diagnostic settings on startup
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
       virtual_text = true,
-      underline = true,
+      underline = false,
     },
     -- passed to `vim.filetype.add`
     filetypes = {
@@ -38,6 +38,8 @@ return {
         signcolumn = "yes", -- sets vim.opt.signcolumn to yes
         wrap = true, -- enable line wrapping
         clipboard = "unnamedplus", -- use system clipboard for all yank/copy operations
+        exrc = true, -- enable loading local .nvim.lua or .exrc files
+        secure = true, -- security for exrc (prompt before executing untrusted files)
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
@@ -72,6 +74,16 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+
+        -- LSP: Go to definition in vertical split
+        ["gd"] = {
+          function()
+            vim.cmd.vsplit()
+            vim.lsp.buf.definition()
+          end,
+          desc = "Go to definition (vsplit)",
+        },
+
         ["<S-ScrollWheelUp>"] = { "zh", desc = "Scroll left (shift+wheel)" },
         ["<S-ScrollWheelDown>"] = { "zl", desc = "Scroll right (shift+wheel)" },
         ["<ScrollWheelLeft>"] = { "zh", desc = "Scroll left (wheel)" },

@@ -13,6 +13,43 @@ return {
     -- Custom Debug Configuration
     dap.configurations.go = dap.configurations.go or {}
 
+    -- Load project-local debug configuration
+    local function load_project_dap_config()
+      local config_files = {
+        ".nvim/dap.lua",
+        ".nvim-dap.lua",
+        ".dap.lua",
+      }
+
+      for _, config_file in ipairs(config_files) do
+        local path = vim.fn.getcwd() .. "/" .. config_file
+        if vim.fn.filereadable(path) == 1 then
+          local ok, config = pcall(dofile, path)
+          if ok and config then
+            -- If the config returns a table, merge it with existing configurations
+            if type(config) == "table" then
+              if config.go then
+                -- Prepend project configs so they appear first in the selection menu
+                for i = #config.go, 1, -1 do
+                  table.insert(dap.configurations.go, 1, config.go[i])
+                end
+              end
+            end
+            vim.notify("Loaded DAP config from " .. config_file, vim.log.levels.INFO)
+            return true
+          end
+        end
+      end
+      return false
+    end
+
+    -- Auto-load project config when opening Go files
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "go",
+      callback = load_project_dap_config,
+      once = true,
+    })
+
     --table.insert(dap.configurations.go, {
     --  name = "Debug package(custom)",
     --  type = "go",
@@ -32,5 +69,6 @@ return {
     map("<leader>di", dap.step_into, "DAP: Step Into")
     map("<leader>dO", dap.step_out, "DAP: Step Out")
     map("<leader>dl", dap.run_last, "DAP: Run Last")
+    map("<leader>dL", load_project_dap_config, "DAP: Load Project Config")
   end,
 }
