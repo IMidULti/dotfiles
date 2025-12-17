@@ -84,6 +84,12 @@ return {
           desc = "Go to definition (vsplit)",
         },
 
+        -- Ghostty keybindings: Command+Arrow keys
+        ["<C-a>"] = { "^", desc = "Go to beginning of line (non-blank)" },
+        ["<C-e>"] = { "$", desc = "Go to end of line" },
+        ["<C-b>"] = { "<C-b>", desc = "Page up" },
+        ["<C-f>"] = { "<C-f>", desc = "Page down" },
+
         ["<S-ScrollWheelUp>"] = { "zh", desc = "Scroll left (shift+wheel)" },
         ["<S-ScrollWheelDown>"] = { "zl", desc = "Scroll right (shift+wheel)" },
         ["<ScrollWheelLeft>"] = { "zh", desc = "Scroll left (wheel)" },
