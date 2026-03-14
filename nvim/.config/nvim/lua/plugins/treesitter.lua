@@ -14,9 +14,14 @@ return {
       "markdown",
       "json",
       "bash",
-      "gohtmltmpl",
+      "gotmpl",
     },
     highlight = { enable = true },
     indent = { enable = true },
   },
+  config = function(_, opts)
+    -- Map gohtml filetype to gotmpl parser
+    vim.treesitter.language.register("gotmpl", "gohtml")
+    require("nvim-treesitter.configs").setup(opts)
+  end,
 }

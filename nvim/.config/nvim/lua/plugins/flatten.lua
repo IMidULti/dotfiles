@@ -1,3 +1,13 @@
+-- flatten.nvim: Prevents nested Neovim instances when opening files from terminal
+-- This plugin allows you to open files in the existing Neovim instance instead of
+-- creating a new one when you run `nvim` from a terminal inside Neovim (e.g., from lazygit).
+--
+-- Configuration:
+-- - Opens files in an alternate window
+-- - Blocks (waits) for git commit messages to be written before continuing
+-- - Automatically closes the terminal window (e.g., lazygit overlay) when opening regular files
+-- - This makes the workflow smoother when using lazygit's 'e' command to edit files
+
 return {
   "willothy/flatten.nvim",
   opts = {
