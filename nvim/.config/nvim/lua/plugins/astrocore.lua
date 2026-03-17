@@ -94,12 +94,20 @@ return {
         ["<S-ScrollWheelDown>"] = { "zl", desc = "Scroll right (shift+wheel)" },
         ["<ScrollWheelLeft>"] = { "zh", desc = "Scroll left (wheel)" },
         ["<ScrollWheelRight>"] = { "zl", desc = "Scroll right (wheel)" },
+
+        -- JSON formatting
+        ["<Leader>jp"] = { ":%!jq .<CR>", desc = "JSON pretty print" },
+        ["<Leader>jc"] = { ":%!jq -c<CR>", desc = "JSON compact/minify" },
       },
       v = {
         ["<S-ScrollWheelUp>"] = { "zh", desc = "Scroll left (shift+wheel)" },
         ["<S-ScrollWheelDown>"] = { "zl", desc = "Scroll right (shift+wheel)" },
         ["<ScrollWheelLeft>"] = { "zh", desc = "Scroll left (wheel)" },
         ["<ScrollWheelRight>"] = { "zl", desc = "Scroll right (wheel)" },
+
+        -- JSON formatting (selection)
+        ["<Leader>jp"] = { ":!jq .<CR>", desc = "JSON pretty print (selection)" },
+        ["<Leader>jc"] = { ":!jq -c<CR>", desc = "JSON compact/minify (selection)" },
       },
     },
   },
