@@ -98,6 +98,31 @@ return {
     on_attach = function(client, bufnr)
       -- this would disable semanticTokensProvider for all clients
       -- client.server_capabilities.semanticTokensProvider = nil
+
+      -- Filter out line length diagnostics
+      local function filter_diagnostics(diagnostic)
+        -- Filter out common line length diagnostic codes/messages
+        local message = diagnostic.message:lower()
+        return not (
+          message:match("line too long") or
+          message:match("max line length") or
+          message:match("line is too long") or
+          diagnostic.code == "E501" or -- Python pycodestyle
+          diagnostic.code == "line-too-long" -- Various linters
+        )
+      end
+
+      vim.diagnostic.config({
+        virtual_text = {
+          source = "if_many",
+          format = function(diagnostic)
+            if filter_diagnostics(diagnostic) then
+              return diagnostic.message
+            end
+            return nil
+          end,
+        },
+      }, bufnr)
     end,
   },
 }
