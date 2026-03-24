@@ -19,7 +19,24 @@ return {
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
-      virtual_text = true,
+      virtual_text = {
+        format = function(diagnostic)
+          -- Filter out line length diagnostic messages
+          local message = diagnostic.message:lower()
+          local is_line_length = (
+            message:match("line too long") or
+            message:match("max line length") or
+            message:match("line is too long") or
+            diagnostic.code == "E501" or -- Python pycodestyle
+            diagnostic.code == "line-too-long" -- Various linters
+          )
+
+          if is_line_length then
+            return nil
+          end
+          return diagnostic.message
+        end,
+      },
       underline = false,
     },
     -- passed to `vim.filetype.add`
