@@ -15,6 +15,8 @@ return {
       "json",
       "bash",
       "gotmpl",
+      "hcl",
+      "terraform",
     },
     highlight = { enable = true },
     indent = { enable = true },
