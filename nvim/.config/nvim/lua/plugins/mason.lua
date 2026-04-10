@@ -12,12 +12,22 @@ return {
         -- install language servers
         "lua-language-server",
         "terraform-ls",
+        "gopls", -- Go language server (ESSENTIAL)
+        "pyright", -- Python language server
 
         -- install formatters
         "stylua",
+        "goimports", -- or "gofumpt" for stricter formatting
+        "black", -- Python formatter
+        "isort", -- Python import sorter
+
+        -- install linters
+        "ruff", -- Python linter/formatter (fast!)
+        "tflint", -- Terraform linter
 
         -- install debuggers
-        "debugpy",
+        "debugpy", -- Python debugger
+        "delve", -- Go debugger
 
         -- install any other package
         "tree-sitter-cli",
