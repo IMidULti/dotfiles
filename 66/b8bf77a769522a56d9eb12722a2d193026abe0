@@ -1,0 +1,29 @@
+nvim/.config/nvim/lua/plugins/lsp-yaml-k8s.lua
+  s_ff07e10cf07d78::t_413444d2800b6b 3-5,7
+nvim/.config/nvim/lazy-lock.json
+  s_ff07e10cf07d78::t_e627db5252b984 2-4,7-10,12,18,20,25,28,32-33,35-36,38-39,42-44,46-48,50,53
+  s_ff07e10cf07d78::t_1d6ba0fd9a6073 5-6,15-17,21,26-27,34,57
+nvim/.config/nvim/lua/lazy_setup.lua
+  s_ff07e10cf07d78::t_78b8a2e3adb8ea 4
+nvim/.config/nvim/lua/plugins/astrolsp.lua
+  s_ff07e10cf07d78::t_c0f14f56aab563 91
+  s_ff07e10cf07d78::t_38caaabb7abf01 73
+nvim/.config/nvim/lua/plugins/treesitter.lua
+  s_ff07e10cf07d78::t_1c01a1f6d0fb97 2-7,11-12,14-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.24",
+  "base_commit_sha": "66b8bf77a769522a56d9eb12722a2d193026abe0",
+  "prompts": {},
+  "sessions": {
+    "s_ff07e10cf07d78": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6abed57c-ed52-4141-a581-c2f927dc48bf",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Ricky Meyers <rmeyers@paloaltonetworks.com>"
+    }
+  }
+}
