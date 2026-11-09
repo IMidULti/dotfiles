@@ -1,8 +1,10 @@
 ---@type LazySpec
 return {
-  "neovim/nvim-lspconfig",
+  -- NOTE: server settings live in AstroLSP's `config`; putting `opts` on nvim-lspconfig
+  -- makes lazy call `require("lspconfig").setup(opts)`, which errors on current lspconfig.
+  "AstroNvim/astrolsp",
   opts = {
-    servers = {
+    config = {
       yamlls = {
         settings = {
           yaml = {

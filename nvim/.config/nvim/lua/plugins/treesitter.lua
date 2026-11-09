@@ -1,29 +1,35 @@
 -- Customize Treesitter
+-- --------------------
+-- nvim-treesitter (main branch) only installs parsers; AstroNvim v6 configures
+-- highlighting, indent and installation through AstroCore's `treesitter` options.
+
+-- Map gohtml filetype to gotmpl parser
+vim.treesitter.language.register("gotmpl", "gohtml")
 
 ---@type LazySpec
 return {
-  "nvim-treesitter/nvim-treesitter",
+  "AstroNvim/astrocore",
+  ---@type AstroCoreOpts
   opts = {
-    ensure_installed = {
-      "lua",
-      "vim",
-      "go",
-      "yaml",
-      "helm",
-      "python",
-      "markdown",
-      "json",
-      "bash",
-      "gotmpl",
-      "hcl",
-      "terraform",
+    treesitter = {
+      highlight = true,
+      indent = true,
+      auto_install = true,
+      ensure_installed = {
+        "lua",
+        "vim",
+        "go",
+        "yaml",
+        "helm",
+        "python",
+        "markdown",
+        "markdown_inline",
+        "json",
+        "bash",
+        "gotmpl",
+        "hcl",
+        "terraform",
+      },
     },
-    highlight = { enable = true },
-    indent = { enable = true },
   },
-  config = function(_, opts)
-    -- Map gohtml filetype to gotmpl parser
-    vim.treesitter.language.register("gotmpl", "gohtml")
-    require("nvim-treesitter.configs").setup(opts)
-  end,
 }
